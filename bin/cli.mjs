@@ -11,6 +11,7 @@ import {ROLES, roleInfo, runEvent, plan} from '../lib/team.mjs';
 import {desk} from '../lib/desk.mjs';
 import {installSkill, removeSkill} from '../lib/install.mjs';
 import {watch, once} from '../lib/watch.mjs';
+import {banner, gold, dimmed, tint} from '../lib/banner.mjs';
 
 const argv = process.argv.slice(2);
 const VALUED = ['home', 'agent', 'dir', 'video', 'sheet', 'post', 'file', 'kw', 'id', 'every', 'url', 'handle'];
@@ -54,16 +55,17 @@ const HELP = `${NAME}: the marketing team of your unmanned AI company, on duty 2
   Every post and reply waits in the inbox unless you list that role in config.autoSend.`;
 
 async function main() {
-  if (cmd === 'help' || flag('help')) return log(HELP);
+  if (cmd === 'help' || flag('help')) { log(banner()); return log(HELP); }
   if (cmd === 'xcount') { const t = pos.slice(1).join(' ') || fs.readFileSync(0, 'utf8'); const n = xLength(t); return log(`${n}/${X_LIMIT} ${n <= X_LIMIT ? 'fits' : 'too long by ' + (n - X_LIMIT)}`); }
   if (cmd === 'roles') { for (const r of roleInfo()) log(`  ${r.id.padEnd(16)} ${r.name.en} · ${r.name.ko}\n  ${''.padEnd(16)} ${r.duty.en}\n  ${''.padEnd(16)} human gates: ${r.humanGates.join('; ')}\n`); return; }
   if (cmd === 'skill') { return flag('remove') ? removeSkill({agent: opt('agent', 'all'), dir: opt('dir'), dryRun: flag('dry-run')}) : installSkill({agent: opt('agent', 'all'), dir: opt('dir'), dryRun: flag('dry-run')}); }
   const h = H();
   if (cmd === 'setup') {
-    const G = (t) => process.stdout.isTTY ? `\x1b[38;2;214;137;42m${t}\x1b[0m` : t, D = (t) => process.stdout.isTTY ? `\x1b[2m${t}\x1b[0m` : t;
-    log('\n  ' + G('CONNECT AI LAB') + D('  ·  AI education for everyone'));
-    log('  ' + 'The marketing team of your unmanned AI company. On duty 24/7.\n');
-    for (const r of roleInfo()) log('  ' + G('●') + ' ' + r.name.en.padEnd(17) + D(r.name.ko));
+    const G = gold, D = dimmed;
+    log(banner());
+    log('  ' + 'The marketing team of your unmanned AI company. On duty ' + G('24/7') + '.\n');
+    const team = roleInfo();
+    team.forEach((r, i) => log('  ' + tint(i, team.length, '●') + ' ' + r.name.en.padEnd(17) + D(r.name.ko)));
     log('');
     const c = path.join(h, 'config.json');
     if (!fs.existsSync(c)) { fs.copyFileSync(path.join(KIT, 'config.example.json'), c); log(`  config: ${c} (edit your handle and keywords)`); } else log(`  config: kept ${c}`);
