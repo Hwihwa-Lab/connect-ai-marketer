@@ -1,6 +1,6 @@
 ---
 name: connect-ai-marketer
-description: Run a marketing team of AI employees on Ego Lite (ego-browser). Use when the user wants to reply to Instagram comments, listen to what people say on X and Threads, check a YouTube upload's saved title/description/playlists/tags, or turn a new video into posts for X, Threads and LinkedIn with an approval inbox. Also for "홍보팀", "댓글 답글", "리스닝", "크로스포스팅", "업로드 마무리".
+description: The marketing team of an unmanned AI company, on duty 24/7 in Ego Lite (ego-browser). Use when the user wants to reply to Instagram comments, listen on X and Threads, read their own X numbers, benchmark YouTube before an upload, break down a post that took off, finish a YouTube upload (title, description, playlists, tags), turn a new video into posts for every channel, or fill a creator-program form. Also for "마케팅팀", "홍보팀", "댓글 답글", "리스닝", "벤치마크", "업로드 마무리", "크로스포스팅".
 ---
 
 # connect-ai-marketer: the marketing team of an unmanned AI company (24/7)
@@ -15,6 +15,10 @@ You write the words (replies, posts). The kit scans, checks, queues and types.
 | listener | search X + Threads for keywords, rank, report | read the report, tell the user what matters |
 | studio-finisher | read a video's saved fields after reload, diff with the sheet | fix what differs (or tell the user) |
 | crossposter | per-channel drafts, X weighted length, inbox, type on approve | write each channel's post |
+| analyst | your recent X posts with numbers, best 5, replies under them | say which topics pull conversation and what people asked for |
+| benchmarker | YouTube search, last 2 weeks by views, title patterns, thumbnail links | read the thumbnails, pick the 3 patterns that win |
+| breakdown | one post: text, numbers, frames from the first seconds | write hook, structure, on-screen words, call to action |
+| form-filler | read a form's questions, fill by label, stop before Submit with a screenshot | pick answers that meet the form's rules; never secrets |
 
 ## Loops
 - Comments (every 10 min if the user asks):
