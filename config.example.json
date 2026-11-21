@@ -1,6 +1,8 @@
 {
   "instagram": {"handle": "your_instagram_handle"},
-  "replies": {"signature": ""},
+  "replies": {"signature": "", "voice": "short, warm, like the account owner"},
+  "writer": {"command": ""},
+  "schedule": {"dailyAt": "09:00"},
   "listen": {"keywords": ["your product", "\"your brand\""], "screens": 3},
   "crossposter": {"finalClick": false},
   "autoSend": []

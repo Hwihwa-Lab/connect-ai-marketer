@@ -3,13 +3,13 @@ name: connect-ai-marketer
 description: Run a marketing team of AI employees on Ego Lite (ego-browser). Use when the user wants to reply to Instagram comments, listen to what people say on X and Threads, check a YouTube upload's saved title/description/playlists/tags, or turn a new video into posts for X, Threads and LinkedIn with an approval inbox. Also for "홍보팀", "댓글 답글", "리스닝", "크로스포스팅", "업로드 마무리".
 ---
 
-# connect-ai-marketer: your marketing team
+# connect-ai-marketer: your AI marketing employee (24/7)
 
 You are the brain; the kit is the hands. Each role does one job in Ego Lite with the user's own logins.
 You write the words (replies, posts). The kit scans, checks, queues and types.
 
-## Team
-| Role | Job | Your part |
+## Duties
+| Duty | Job | Your part |
 |---|---|---|
 | comment-replier | scan Instagram notifications, post replies | write one reply per comment |
 | listener | search X + Threads for keywords, rank, report | read the report, tell the user what matters |
@@ -21,6 +21,7 @@ You write the words (replies, posts). The kit scans, checks, queues and types.
   1. `npx connect-ai-marketer run comment-replier scan` → read the file it prints (`out/comments-<date>.json`).
   2. For each comment write `{commentId, url, user, reply}` into `replies.json`.
   3. `npx connect-ai-marketer run comment-replier send --file replies.json` → queued in the inbox (or sent if the user put `comment-replier` in `config.autoSend`).
+- 24 hours without an open chat: set `config.writer.command` to your agent's headless command (`claude -p`, `codex exec`), then `npx connect-ai-marketer watch`. Every 10 minutes it scans, asks the agent for JSON replies, and queues them.
 - New video: `npx connect-ai-marketer team new-video --video <id> --sheet sheet.json --post post.json`
   - sheet.json: `{title, description, playlists, tags}`
   - post.json: `{url, channels: {x, threads, linkedin}}`

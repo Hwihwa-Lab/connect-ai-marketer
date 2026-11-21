@@ -10,9 +10,10 @@ import * as inbox from '../lib/inbox.mjs';
 import {ROLES, roleInfo, runEvent, plan} from '../lib/team.mjs';
 import {desk} from '../lib/desk.mjs';
 import {installSkill, removeSkill} from '../lib/install.mjs';
+import {watch, once} from '../lib/watch.mjs';
 
 const argv = process.argv.slice(2);
-const VALUED = ['home', 'agent', 'dir', 'video', 'sheet', 'post', 'file', 'kw', 'id'];
+const VALUED = ['home', 'agent', 'dir', 'video', 'sheet', 'post', 'file', 'kw', 'id', 'every'];
 const opt = (n, d = null) => { const i = argv.indexOf('--' + n); return i >= 0 && argv[i + 1] && !argv[i + 1].startsWith('--') ? argv[i + 1] : d; };
 const flag = (n) => argv.includes('--' + n);
 const pos = argv.filter((a, i) => !a.startsWith('--') && !(i > 0 && VALUED.includes(argv[i - 1].slice(2))));
@@ -26,17 +27,18 @@ function openFile(f) {
   spawn(c[0], c[1], {detached: true, stdio: 'ignore'}).unref();
 }
 
-const HELP = `${NAME}: your marketing team of AI employees, working in Ego Lite.
+const HELP = `${NAME}: your AI marketing employee, promoting you 24 hours a day, 7 days a week, in Ego Lite.
 
   setup                      make your work folder + config, install the skill for your agents
   doctor                     check Ego Lite, config, and the team plan
-  roles                      list the AI employees and what each one does
+  roles                      list your employee's duties and what each one does
   team <event>               run an event from team.json (new-video, daily)
                              new-video takes --video <id> --sheet <sheet.json> --post <post.json>
   run <role> <action>        run one role, e.g. run listener listen --kw "ego lite"
                              run comment-replier scan | send --file replies.json
                              run studio-finisher check --video <id> --sheet sheet.json
                              run crossposter draft --post post.json
+  watch [--every 10] [--once] on duty 24/7: comments every 10 min, daily duties once a day
   inbox                      what is waiting for your approval
   approve <id>               let one waiting item go out
   reject <id>                drop one waiting item
@@ -83,6 +85,7 @@ async function main() {
     const r = await fn(h, cfg, item);
     return log(`  ${item.id}: ${r.status}${r.status === 'typed-waiting-for-you' ? ' (the post is typed in Ego Lite; press Post yourself)' : ''}`);
   }
+  if (cmd === 'watch') { return flag('once') ? once(h, cfg, log) : watch(h, cfg, {every: +(opt('every', 10)) || 10, log}); }
   if (cmd === 'team') { const r = await runEvent(h, cfg, pos[1], args, log); return log('  log: ' + r.file); }
   if (cmd === 'run') {
     const [, role, action] = pos;

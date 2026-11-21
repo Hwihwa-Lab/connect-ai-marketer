@@ -1,23 +1,25 @@
 # connect-ai-marketer
 
-**A marketing team of AI employees that works in your own logged-in browser.**
+**Your AI marketing employee: promotes you 24 hours a day, 7 days a week, in your own logged-in browser.**
 Source available by CONNECT AI LAB · MIT + Commons Clause (free to use, not for resale) · runs on [Ego Lite](https://lite.ego.app)
 
 ```bash
 npx connect-ai-marketer setup
 ```
 
-Each role is one AI employee with one job. A team lead runs them in order when something happens (a new video, a new day). Your agent (Claude Code, Codex, Antigravity) writes the words; the kit scans, checks, queues and types in Ego Lite, so your own tabs stay yours.
+[![connect-ai-marketer](docs/hero.webp)](docs/index.html)
 
-| Role | Job | Status |
+The employee has four duties, built one by one and wired by a work schedule (`team.json`): comments every 10 minutes, listening every morning, finishing and posting every upload. `npx connect-ai-marketer watch` puts it on duty around the clock. Your agent (Claude Code, Codex, Antigravity) writes the words; the kit scans, checks, queues and types in Ego Lite, so your own tabs stay yours.
+
+| Duty | What it does | Status |
 |---|---|---|
 | comment-replier | collect new Instagram comments, post replies in each commenter's language | v0.1 |
 | listener | search X and Threads for your keywords, rank by reach, write a report | v0.1 |
 | studio-finisher | reload a YouTube Studio video and diff saved title, description, playlists, tags with your sheet | v0.1 (reads only) |
 | crossposter | per-channel drafts, X weighted length check, approval inbox, types the post | v0.1 |
-| benchmarker, analyst, tagger, form-filler | | next |
+| benchmarker, analyst, tagger, form-filler | next duties | next |
 
-## How the team works
+## How the employee works
 
 ```
 team new-video ─▶ studio-finisher ─▶ crossposter (drafts → inbox) ─▶ comment-replier
@@ -34,6 +36,7 @@ team daily     ─▶ listener ─▶ comment-replier ─▶ desk
 
 ```bash
 npx connect-ai-marketer roles
+npx connect-ai-marketer watch            # on duty 24/7
 npx connect-ai-marketer run listener listen --kw "your product"
 npx connect-ai-marketer run comment-replier scan
 npx connect-ai-marketer run comment-replier send --file replies.json

@@ -1,7 +1,7 @@
 {
   "name": "connect-ai-marketer",
   "version": "0.1.0",
-  "description": "An AI marketing team that works in your logged-in browser. One AI employee per role (comment replies, listening, upload finishing, cross-posting), wired together by a team lead, with an approval inbox and a daily desk report. Runs on Ego Lite.",
+  "description": "Your AI marketing employee, on duty 24/7 in your logged-in browser: answers comments, listens on X and Threads, finishes YouTube uploads, drafts posts for every channel. Approval inbox, daily desk. Runs on Ego Lite. By CONNECT AI LAB.",
   "type": "module",
   "bin": { "connect-ai-marketer": "bin/cli.mjs" },
   "scripts": { "test": "node tests/run.mjs" },
