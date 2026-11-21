@@ -4,7 +4,7 @@
 CONNECT AI LAB 공개 코드 · MIT + Commons Clause (무료로 쓰되 판매 금지) · [에고라이트(Ego Lite)](https://lite.ego.app) 위에서 동작
 
 ```bash
-npx connect-ai-marketer setup
+npx github:wonseokjung/connect-ai-marketer setup
 ```
 
 ![connect-ai-marketer](docs/hero.webp)

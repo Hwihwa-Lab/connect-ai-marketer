@@ -21,6 +21,7 @@ const cmd = pos[0] || 'help';
 const log = (...a) => console.log(...a);
 const args = Object.fromEntries(VALUED.map((k) => [k, opt(k)]).filter(([, v]) => v));
 const H = () => home(opt('home'));
+const RUN = 'npx github:wonseokjung/connect-ai-marketer'; // becomes `npx connect-ai-marketer` once it is on npm
 
 function openFile(f) {
   const c = process.platform === 'darwin' ? ['open', [f]] : process.platform === 'win32' ? ['cmd', ['/c', 'start', '', f]] : ['xdg-open', [f]];
@@ -59,12 +60,24 @@ async function main() {
   if (cmd === 'skill') { return flag('remove') ? removeSkill({agent: opt('agent', 'all'), dir: opt('dir'), dryRun: flag('dry-run')}) : installSkill({agent: opt('agent', 'all'), dir: opt('dir'), dryRun: flag('dry-run')}); }
   const h = H();
   if (cmd === 'setup') {
+    const G = (t) => process.stdout.isTTY ? `\x1b[38;2;214;137;42m${t}\x1b[0m` : t, D = (t) => process.stdout.isTTY ? `\x1b[2m${t}\x1b[0m` : t;
+    log('\n  ' + G('CONNECT AI LAB') + D('  ·  AI education for everyone'));
+    log('  ' + 'The marketing team of your unmanned AI company. On duty 24/7.\n');
+    for (const r of roleInfo()) log('  ' + G('●') + ' ' + r.name.en.padEnd(17) + D(r.name.ko));
+    log('');
     const c = path.join(h, 'config.json');
     if (!fs.existsSync(c)) { fs.copyFileSync(path.join(KIT, 'config.example.json'), c); log(`  config: ${c} (edit your handle and keywords)`); } else log(`  config: kept ${c}`);
     const t = path.join(h, 'team.json');
     if (!fs.existsSync(t)) { fs.copyFileSync(path.join(KIT, 'team.json'), t); log(`  team plan: ${t} (change the order to make it your team)`); }
     log('  skill:'); installSkill({agent: opt('agent', 'all'), dir: opt('dir'), dryRun: flag('dry-run')});
-    if (egoInstalled()) { log('  Ego Lite: found. Sign in to Instagram, X, Threads and YouTube Studio inside Ego Lite once.'); return; }
+    if (egoInstalled()) {
+      log('  Ego Lite: found. Sign in to Instagram, X, Threads and YouTube Studio inside Ego Lite once.');
+      log('\n  ' + G('Your team is hired.') + ' Next:');
+      log('    1. edit ' + c + ' (your handles and keywords)');
+      log('    2. ' + RUN + ' doctor');
+      log('    3. ' + RUN + ' watch     ' + D('# on duty 24/7') + '\n');
+      return;
+    }
     log('  Ego Lite: not found. Opening the download page: https://lite.ego.app');
     log('  Install it, open it, finish its first-run steps, then sign in to your sites inside it. Waiting here (Ctrl+C to stop)...');
     if (!flag('no-open')) openFile('https://lite.ego.app');

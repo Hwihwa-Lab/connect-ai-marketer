@@ -4,7 +4,7 @@
 Source available by CONNECT AI LAB · MIT + Commons Clause (free to use, not for resale) · runs on [Ego Lite](https://lite.ego.app)
 
 ```bash
-npx connect-ai-marketer setup
+npx github:wonseokjung/connect-ai-marketer setup
 ```
 
 [![connect-ai-marketer](docs/hero.webp)](docs/index.html)
