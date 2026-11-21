@@ -27,11 +27,11 @@ function openFile(f) {
   spawn(c[0], c[1], {detached: true, stdio: 'ignore'}).unref();
 }
 
-const HELP = `${NAME}: your AI marketing employee, promoting you 24 hours a day, 7 days a week, in Ego Lite.
+const HELP = `${NAME}: the marketing team of your unmanned AI company, on duty 24/7 in Ego Lite.
 
   setup                      make your work folder + config, install the skill for your agents
   doctor                     check Ego Lite, config, and the team plan
-  roles                      list your employee's duties and what each one does
+  roles                      list the AI teammates and what each one does
   team <event>               run an event from team.json (new-video, daily)
                              new-video takes --video <id> --sheet <sheet.json> --post <post.json>
   run <role> <action>        run one role, e.g. run listener listen --kw "ego lite"

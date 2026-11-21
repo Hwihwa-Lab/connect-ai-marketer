@@ -3,13 +3,13 @@ name: connect-ai-marketer
 description: Run a marketing team of AI employees on Ego Lite (ego-browser). Use when the user wants to reply to Instagram comments, listen to what people say on X and Threads, check a YouTube upload's saved title/description/playlists/tags, or turn a new video into posts for X, Threads and LinkedIn with an approval inbox. Also for "홍보팀", "댓글 답글", "리스닝", "크로스포스팅", "업로드 마무리".
 ---
 
-# connect-ai-marketer: your AI marketing employee (24/7)
+# connect-ai-marketer: the marketing team of an unmanned AI company (24/7)
 
 You are the brain; the kit is the hands. Each role does one job in Ego Lite with the user's own logins.
 You write the words (replies, posts). The kit scans, checks, queues and types.
 
-## Duties
-| Duty | Job | Your part |
+## Team
+| Teammate | Job | Your part |
 |---|---|---|
 | comment-replier | scan Instagram notifications, post replies | write one reply per comment |
 | listener | search X + Threads for keywords, rank, report | read the report, tell the user what matters |
