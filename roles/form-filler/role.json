@@ -1,0 +1,3 @@
+{"id": "form-filler", "name": {"en": "Form filler", "ko": "신청서 담당"},
+ "duty": {"en": "Creator programs and campaigns ask the same things every time. It reads the form's questions, fills them from your profile and the answers your agent picked, and stops before Submit with a screenshot. You check and press Submit.", "ko": "크리에이터 프로그램과 캠페인 신청서는 매번 같은 걸 묻습니다. 질문을 읽고, 내 프로필과 에이전트가 고른 답으로 채운 뒤 제출 직전에 화면을 찍고 멈춥니다. 확인하고 제출은 내가 누릅니다."},
+ "in": "--url, answers.json {question: answer}", "out": "out/form-<date>-<n>.png + .json", "humanGates": ["Submit is always yours", "never passwords, IDs, card or bank numbers"], "loop": "when a program opens"}

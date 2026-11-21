@@ -1,0 +1,3 @@
+{"id": "analyst", "name": {"en": "Analyst", "ko": "숫자 담당"},
+ "duty": {"en": "Reads your own X numbers: your recent posts with views, likes and replies, your best 5, and what people said under them. Your agent tells you which topics pull conversation.", "ko": "내 X 숫자를 읽습니다. 최근 글의 조회수, 좋아요, 답글과 가장 반응 좋은 글 5개, 그 아래 사람들이 한 말까지. 어떤 주제가 대화를 만드는지는 에이전트가 정리합니다."},
+ "in": "config.x.handle", "out": "out/analyst-<date>.json, .md", "humanGates": ["read only"], "loop": "every morning"}

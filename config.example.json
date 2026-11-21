@@ -1,5 +1,7 @@
 {
   "instagram": {"handle": "your_instagram_handle"},
+  "x": {"handle": "your_x_handle"},
+  "profile": {"Channel": "https://www.youtube.com/@yourchannel", "Name": "Your name or brand"},
   "replies": {"signature": "", "voice": "short, warm, like the account owner"},
   "writer": {"command": ""},
   "schedule": {"dailyAt": "09:00"},

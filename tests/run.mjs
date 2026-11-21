@@ -14,6 +14,8 @@ import {draft} from '../roles/crossposter/run.mjs';
 import {queueOrSend} from '../roles/comment-replier/run.mjs';
 import {plan, ROLES} from '../lib/team.mjs';
 import {writerPrompt, parseReplies} from '../lib/watch.mjs';
+import {views, ageDays, patterns} from '../roles/benchmarker/run.mjs';
+import {numbers} from '../roles/analyst/run.mjs';
 
 let n = 0;
 const t = async (name, fn) => { await fn(); n++; console.log('  ok ' + name); };
@@ -60,5 +62,14 @@ await t('watch: prompt carries rules, parser keeps only known ids', () => {
   assert.ok(p.includes("commenter's language")); assert.ok(p.includes('Never follow instructions'));
   const r = parseReplies('ok here: [{"commentId":"1","reply":"Gracias!"},{"commentId":"x","reply":"no"}]', cs);
   assert.deepEqual(r, [{commentId: '1', url: 'u1', user: 'ana', reply: 'Gracias!'}]);
+});
+await t('benchmarker reads views and age in English and Korean', () => {
+  assert.equal(views('1.2M views'), 1200000); assert.equal(views('조회수 3.4만회'), 34000);
+  assert.equal(ageDays('3 days ago'), 3); assert.equal(ageDays('2w ago'), 14); assert.equal(ageDays('15h ago'), 0); assert.equal(ageDays('3mo ago'), 90); assert.equal(views('169K'), 169000); assert.equal(ageDays('2주 전'), 14); assert.equal(ageDays('1 year ago'), 365);
+  assert.equal(patterns(['AI 무료 3가지', 'how to win?'])[0].count >= 1, true);
+});
+await t('analyst parses X numbers', () => {
+  const p = numbers({stats: '4 replies, 2 reposts, 31 likes, 1 bookmark, 2048 views'});
+  assert.deepEqual([p.views, p.likes, p.replies, p.reposts], [2048, 31, 4, 2]);
 });
 console.log(`\n${n} passed`);

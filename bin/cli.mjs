@@ -13,7 +13,7 @@ import {installSkill, removeSkill} from '../lib/install.mjs';
 import {watch, once} from '../lib/watch.mjs';
 
 const argv = process.argv.slice(2);
-const VALUED = ['home', 'agent', 'dir', 'video', 'sheet', 'post', 'file', 'kw', 'id', 'every'];
+const VALUED = ['home', 'agent', 'dir', 'video', 'sheet', 'post', 'file', 'kw', 'id', 'every', 'url', 'handle'];
 const opt = (n, d = null) => { const i = argv.indexOf('--' + n); return i >= 0 && argv[i + 1] && !argv[i + 1].startsWith('--') ? argv[i + 1] : d; };
 const flag = (n) => argv.includes('--' + n);
 const pos = argv.filter((a, i) => !a.startsWith('--') && !(i > 0 && VALUED.includes(argv[i - 1].slice(2))));
@@ -36,8 +36,11 @@ const HELP = `${NAME}: the marketing team of your unmanned AI company, on duty 2
                              new-video takes --video <id> --sheet <sheet.json> --post <post.json>
   run <role> <action>        run one role, e.g. run listener listen --kw "ego lite"
                              run comment-replier scan | send --file replies.json
-                             run studio-finisher check --video <id> --sheet sheet.json
+                             run studio-finisher finish|check --video <id> --sheet sheet.json
                              run crossposter draft --post post.json
+                             run analyst read            run benchmarker bench --kw "keyword"
+                             run breakdown grab --url <post>
+                             run form-filler questions --url <form>   then fill --url <form> --file answers.json
   watch [--every 10] [--once] on duty 24/7: comments every 10 min, daily duties once a day
   inbox                      what is waiting for your approval
   approve <id>               let one waiting item go out
@@ -61,7 +64,17 @@ async function main() {
     const t = path.join(h, 'team.json');
     if (!fs.existsSync(t)) { fs.copyFileSync(path.join(KIT, 'team.json'), t); log(`  team plan: ${t} (change the order to make it your team)`); }
     log('  skill:'); installSkill({agent: opt('agent', 'all'), dir: opt('dir'), dryRun: flag('dry-run')});
-    log(egoInstalled() ? '  Ego Lite: found' : '  Ego Lite: not found. Install it from https://lite.ego.app, then sign in to your sites inside it.');
+    if (egoInstalled()) { log('  Ego Lite: found. Sign in to Instagram, X, Threads and YouTube Studio inside Ego Lite once.'); return; }
+    log('  Ego Lite: not found. Opening the download page: https://lite.ego.app');
+    log('  Install it, open it, finish its first-run steps, then sign in to your sites inside it. Waiting here (Ctrl+C to stop)...');
+    if (!flag('no-open')) openFile('https://lite.ego.app');
+    const PATHS = [path.join(process.env.HOME || process.env.USERPROFILE || '', '.local', 'bin')];
+    for (let i = 0; i < 180; i++) {
+      process.env.PATH = PATHS.join(path.delimiter) + path.delimiter + process.env.PATH;
+      if (egoInstalled()) { log('  Ego Lite: ready. Your marketing team can start: npx connect-ai-marketer doctor'); return; }
+      await new Promise((r) => setTimeout(r, 10000));
+    }
+    log('  Still no ego-browser command. Open a new terminal after Ego Lite finishes its first-run steps, then run setup again.');
     return;
   }
   if (cmd === 'doctor') {
