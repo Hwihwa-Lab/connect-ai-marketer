@@ -1,0 +1,10 @@
+{
+  "id": "studio-finisher",
+  "name": {"en": "Upload finisher", "ko": "업로드 마무리 담당"},
+  "duty": {"en": "Opens a video in YouTube Studio after a reload and reads back what is really saved: title, description, playlists, tags, visibility. Compares it with your upload sheet and lists every difference.", "ko": "YouTube Studio에서 영상을 새로고침해 열고 실제로 저장된 제목, 설명, 재생목록, 태그, 공개 상태를 읽습니다. 업로드 시트와 비교해 다른 점을 모두 적습니다."},
+  "steps": ["open edit page", "read saved fields", "compare with sheet"],
+  "in": "videoId + sheet.json {title, description, playlists, tags}",
+  "out": "out/studio-<videoId>-<date>.json",
+  "humanGates": ["your own Studio login", "v0.1 reads only; you fix in Studio, then run it again"],
+  "loop": "after each upload"
+}

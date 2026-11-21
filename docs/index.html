@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>connect-ai-marketer</title>
+<meta name="description" content="A marketing team of AI employees that works in your own logged-in browser. Open source by CONNECT AI LAB.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0a08;--panel:#13110d;--fg:#ece6da;--mute:#9b917f;--gold:#d6892a;--gold2:#f2b45a;--line:#2a251d;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 Inter,-apple-system,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding-block:40px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.by{font:500 12px/1 'JetBrains Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+h1{font-weight:300;font-size:clamp(34px,6vw,60px);line-height:1.05;margin:18px 0 14px;letter-spacing:-.01em;text-wrap:balance}h1 b{font-weight:500;color:var(--gold2)}
+.lead{color:var(--mute);max-width:640px;font-size:18px}
+.cmd{display:flex;align-items:center;gap:12px;margin:28px 0 8px;background:var(--panel);border:1px solid var(--line);padding:14px 16px;max-width:560px;font:15px 'JetBrains Mono',monospace;overflow-x:auto}
+.cmd span{flex:1;white-space:nowrap}.cmd button{background:var(--gold);color:#140e05;border:0;padding:8px 14px;font:600 13px Inter,sans-serif;cursor:pointer}
+.small{color:var(--mute);font-size:13px}
+h2{font:600 12px/1 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:56px 0 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.role{background:var(--panel);border:1px solid var(--line);padding:18px;min-width:0}.role .id{font:500 13px 'JetBrains Mono',monospace;color:var(--gold2)}
+.role h3{margin:6px 0 8px;font-weight:500;font-size:18px}.role p{margin:0;color:var(--mute);font-size:14px}.role .gate{margin-top:12px;font-size:12px;color:var(--fg);opacity:.7}
+.role.next{opacity:.45}
+pre{background:var(--panel);border:1px solid var(--line);padding:18px;overflow-x:auto;font:14px/1.7 'JetBrains Mono',monospace;color:var(--fg)}
+pre .g{color:var(--gold2)}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.rules div{border-left:2px solid var(--gold);padding:4px 0 4px 14px;color:var(--mute);font-size:15px}.rules b{color:var(--fg);font-weight:500}
+footer{margin-top:64px;border-top:1px solid var(--line);padding-top:20px;color:var(--mute);font-size:13px}
+a{color:var(--gold2)}
+</style></head><body><div class="wrap">
+<div class="by">Open source by CONNECT AI LAB</div>
+<h1>Your marketing team,<br><b>one AI employee per job.</b></h1>
+<p class="lead">Each role does one job inside Ego Lite with your own logins. A team lead runs them in order when a video goes up or a day starts. Your agent writes the words; every post waits for your approval.</p>
+<div class="cmd"><span id="c">npx connect-ai-marketer setup</span><button id="b">Copy</button></div>
+<div class="small">MIT · Node 18+ · needs <a href="https://lite.ego.app">Ego Lite</a> (free, separate product) · works with Claude Code, Codex, Antigravity</div>
+
+<h2>The team</h2>
+<div class="grid">
+ <div class="role"><div class="id">comment-replier</div><h3>Comment replier</h3><p>Collects new Instagram comments and posts the replies your agent wrote, in each commenter's language, 15 to 30 seconds apart.</p><div class="gate">Gate: questions needing facts go to you</div></div>
+ <div class="role"><div class="id">listener</div><h3>Listener</h3><p>Searches X and Threads for your keywords, keeps only real mentions, ranks them by reach and writes a report.</p><div class="gate">Read only: never likes or replies</div></div>
+ <div class="role"><div class="id">studio-finisher</div><h3>Upload finisher</h3><p>Reloads a YouTube Studio video and checks the saved title, description, playlists and tags against your sheet.</p><div class="gate">v0.1 reads and reports</div></div>
+ <div class="role"><div class="id">crossposter</div><h3>Crossposter</h3><p>One video into posts for X, Threads and LinkedIn. Checks X weighted length, queues drafts, types on approve.</p><div class="gate">Final Post click is yours by default</div></div>
+ <div class="role next"><div class="id">benchmarker</div><h3>Benchmarker</h3><p>What is working now in your niche: titles, thumbnails, hooks.</p><div class="gate">next</div></div>
+ <div class="role next"><div class="id">analyst</div><h3>Analyst</h3><p>Your numbers, read back every morning.</p><div class="gate">next</div></div>
+</div>
+
+<h2>How they work together</h2>
+<pre><span class="g">team new-video</span>  studio-finisher  →  crossposter (drafts → inbox)  →  comment-replier
+<span class="g">team daily</span>      listener  →  comment-replier  →  desk
+
+roles/&lt;id&gt;/role.json + run.mjs     one employee
+team.json                         the order (copy it, change it, it is your team)
+inbox/approvals.json              everything that leaves waits here
+desk                              today on one page</pre>
+
+<h2>Commands</h2>
+<pre>npx connect-ai-marketer roles
+npx connect-ai-marketer run listener listen --kw "your product"
+npx connect-ai-marketer run comment-replier scan
+npx connect-ai-marketer run comment-replier send --file replies.json
+npx connect-ai-marketer team new-video --video &lt;id&gt; --sheet sheet.json --post post.json
+npx connect-ai-marketer inbox
+npx connect-ai-marketer approve a3
+npx connect-ai-marketer desk
+npx connect-ai-marketer xcount "a post with a link"</pre>
+
+<h2>Rules the team keeps</h2>
+<div class="rules">
+ <div><b>Your logins stay yours.</b> The kit never types passwords, codes or card numbers.</div>
+ <div><b>Approve to send.</b> Posts and replies wait in the inbox unless you trust a role with autoSend.</div>
+ <div><b>Human pace.</b> Replies are spaced out; listening never likes, follows or replies.</div>
+ <div><b>Stop, do not guess.</b> If a site changed and a button is missing, the role stops and says so.</div>
+</div>
+
+<footer>connect-ai-marketer · CONNECT AI LAB · MIT. Ego Lite is a separate free product with its own terms.</footer>
+</div>
+<script>
+document.getElementById('b').addEventListener('click',async()=>{const t=document.getElementById('c').textContent;try{await navigator.clipboard.writeText(t);b.textContent='Copied'}catch(e){const r=document.createRange();r.selectNodeContents(document.getElementById('c'));const s=getSelection();s.removeAllRanges();s.addRange(r)}setTimeout(()=>b.textContent='Copy',1500)});
+</script>
+</body></html>

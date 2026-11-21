@@ -1,0 +1,7 @@
+{
+  "instagram": {"handle": "your_instagram_handle"},
+  "replies": {"signature": ""},
+  "listen": {"keywords": ["your product", "\"your brand\""], "screens": 3},
+  "crossposter": {"finalClick": false},
+  "autoSend": []
+}

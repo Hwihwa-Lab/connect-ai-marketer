@@ -1,0 +1,14 @@
+{
+  "_about": "Your team's order of work. Each event is a list of steps; each step calls one role. Change the order, remove a step, or add your own role.",
+  "events": {
+    "new-video": [
+      {"role": "studio-finisher", "action": "check", "needs": ["video", "sheet"]},
+      {"role": "crossposter", "action": "draft", "needs": ["post"]},
+      {"role": "comment-replier", "action": "scan"}
+    ],
+    "daily": [
+      {"role": "listener", "action": "listen"},
+      {"role": "comment-replier", "action": "scan"}
+    ]
+  }
+}

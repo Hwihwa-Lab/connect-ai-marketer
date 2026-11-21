@@ -1,0 +1,10 @@
+{
+  "id": "crossposter",
+  "name": {"en": "Crossposter", "ko": "게시 담당"},
+  "duty": {"en": "Turns one new video into a post for each channel (X, Threads, LinkedIn), checks X's weighted length, and puts every draft in the approval inbox. After you approve, it opens the composer, types the post, and stops before the final click unless you allow it.", "ko": "새 영상 하나를 채널별 글(X, 스레드, 링크드인)로 바꾸고 X 가중치 글자 수를 확인한 뒤 결재함에 넣습니다. 승인하면 작성 창을 열고 글을 입력하고, 허락하기 전에는 마지막 게시 버튼 앞에서 멈춥니다."},
+  "steps": ["draft per channel (your agent writes the words)", "X length check", "inbox", "on approve: type, stop before Post"],
+  "in": "post.json {url, channels: {x, threads, linkedin}}",
+  "out": "inbox/approvals.json",
+  "humanGates": ["every post waits for approve", "final Post click is yours unless config.crossposter.finalClick is true"],
+  "loop": "after each upload"
+}

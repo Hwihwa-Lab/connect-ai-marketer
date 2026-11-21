@@ -1,0 +1,10 @@
+{
+  "id": "listener",
+  "name": {"en": "Listener", "ko": "리스닝 담당"},
+  "duty": {"en": "Searches X and Threads for your keywords, keeps the posts that really mention them, ranks them by reach, and writes a short report.", "ko": "X와 스레드에서 키워드를 찾아 진짜 그 말을 하는 글만 남기고, 반응 순으로 정리해 짧은 리포트를 씁니다."},
+  "steps": ["search X (top + latest)", "search Threads", "filter + rank", "report"],
+  "in": "config.listen.keywords",
+  "out": "out/listen-<keyword>-<date>.json, out/listen-<date>.md",
+  "humanGates": ["your own login on X and Threads", "read only: never likes, follows or replies"],
+  "loop": "daily"
+}

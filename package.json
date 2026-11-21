@@ -1,0 +1,14 @@
+{
+  "name": "connect-ai-marketer",
+  "version": "0.1.0",
+  "description": "An AI marketing team that works in your logged-in browser. One AI employee per role (comment replies, listening, upload finishing, cross-posting), wired together by a team lead, with an approval inbox and a daily desk report. Runs on Ego Lite.",
+  "type": "module",
+  "bin": { "connect-ai-marketer": "bin/cli.mjs" },
+  "scripts": { "test": "node tests/run.mjs" },
+  "files": ["bin", "lib", "roles", "skill", "docs", "team.json", "config.example.json", "README.md", "README.ko.md", "LICENSE", "NOTICE.md"],
+  "engines": { "node": ">=18" },
+  "keywords": ["ai-agent", "marketing", "browser-automation", "ego-lite", "claude-code", "codex", "connect-ai-lab"],
+  "author": "CONNECT AI LAB",
+  "license": "MIT",
+  "homepage": "https://www.aicitybuilders.com"
+}

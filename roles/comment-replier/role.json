@@ -1,0 +1,10 @@
+{
+  "id": "comment-replier",
+  "name": {"en": "Comment replier", "ko": "댓글 담당"},
+  "duty": {"en": "Checks Instagram notifications, collects new comments on your posts, and posts the replies your agent wrote, in the commenter's language.", "ko": "인스타 알림에서 새 댓글을 모으고, 에이전트가 쓴 답글을 댓글 단 사람의 언어로 올립니다."},
+  "steps": ["scan", "write replies (your agent)", "send"],
+  "in": "nothing (scan) / replies.json (send)",
+  "out": "out/comments-<date>.json, logs/comment-replier.json",
+  "humanGates": ["your own login", "comments asking for facts you have not said publicly go to the list, not a reply"],
+  "loop": "every 10 minutes"
+}
