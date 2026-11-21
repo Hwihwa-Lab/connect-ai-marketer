@@ -1,7 +1,7 @@
 # connect-ai-marketer
 
 **A marketing team of AI employees that works in your own logged-in browser.**
-Open source by CONNECT AI LAB · MIT · runs on [Ego Lite](https://lite.ego.app)
+Source available by CONNECT AI LAB · MIT + Commons Clause (free to use, not for resale) · runs on [Ego Lite](https://lite.ego.app)
 
 ```bash
 npx connect-ai-marketer setup
@@ -48,6 +48,9 @@ Work folder: `~/.connect-ai-marketer` (`config.json`, `team.json`, `out/`, `logs
 
 ## Add your own role
 Copy `roles/listener/`, edit `role.json` and `run.mjs`, register it in `lib/team.mjs`, add a step to `team.json`. The agent skill (`skill/SKILL.md`) tells your agent how the team works.
+
+## License
+MIT with the Commons Clause. Use it, change it, share it, and use it to market your own business. Do not sell it, sell access to it, or sell a paid course or service built mainly on it. See LICENSE.
 
 ## Requirements
 Node 18+, macOS or Windows, Ego Lite installed and signed in to the sites you use. See NOTICE.md.

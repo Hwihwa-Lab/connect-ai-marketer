@@ -9,6 +9,6 @@
   "engines": { "node": ">=18" },
   "keywords": ["ai-agent", "marketing", "browser-automation", "ego-lite", "claude-code", "codex", "connect-ai-lab"],
   "author": "CONNECT AI LAB",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://www.aicitybuilders.com"
 }

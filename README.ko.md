@@ -1,7 +1,7 @@
 # connect-ai-marketer
 
 **내 로그인된 브라우저에서 일하는 AI 직원 홍보팀.**
-CONNECT AI LAB 오픈소스 · MIT · [에고라이트(Ego Lite)](https://lite.ego.app) 위에서 동작
+CONNECT AI LAB 공개 코드 · MIT + Commons Clause (무료로 쓰되 판매 금지) · [에고라이트(Ego Lite)](https://lite.ego.app) 위에서 동작
 
 ```bash
 npx connect-ai-marketer setup
@@ -25,3 +25,6 @@ npx connect-ai-marketer setup
 - **사람 문**: 로그인, 모든 게시, 마지막 게시 버튼(`crossposter.finalClick` 을 켜지 않으면).
 
 명령은 영어 README와 같습니다. 작업 폴더는 `~/.connect-ai-marketer` 이고 킷 안에는 아무것도 쓰지 않습니다.
+
+## 라이선스
+MIT + Commons Clause. 읽고, 쓰고, 고치고, 나눠도 되고, 내 사업 홍보에 써도 됩니다. 이 코드를 팔거나, 이 코드로 유료 강의 · 호스팅 · 서비스를 파는 것은 안 됩니다. 자세한 내용은 LICENSE.

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>connect-ai-marketer</title>
-<meta name="description" content="A marketing team of AI employees that works in your own logged-in browser. Open source by CONNECT AI LAB.">
+<meta name="description" content="A marketing team of AI employees that works in your own logged-in browser. Source available by CONNECT AI LAB.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0b0a08;--panel:#13110d;--fg:#ece6da;--mute:#9b917f;--gold:#d6892a;--gold2:#f2b45a;--line:#2a251d;color-scheme:dark}
@@ -24,11 +24,11 @@ pre .g{color:var(--gold2)}
 footer{margin-top:64px;border-top:1px solid var(--line);padding-top:20px;color:var(--mute);font-size:13px}
 a{color:var(--gold2)}
 </style></head><body><div class="wrap">
-<div class="by">Open source by CONNECT AI LAB</div>
+<div class="by">Source available by CONNECT AI LAB</div>
 <h1>Your marketing team,<br><b>one AI employee per job.</b></h1>
 <p class="lead">Each role does one job inside Ego Lite with your own logins. A team lead runs them in order when a video goes up or a day starts. Your agent writes the words; every post waits for your approval.</p>
 <div class="cmd"><span id="c">npx connect-ai-marketer setup</span><button id="b">Copy</button></div>
-<div class="small">MIT · Node 18+ · needs <a href="https://lite.ego.app">Ego Lite</a> (free, separate product) · works with Claude Code, Codex, Antigravity</div>
+<div class="small">Free to use, not for resale (MIT + Commons Clause) · Node 18+ · needs <a href="https://lite.ego.app">Ego Lite</a> (free, separate product) · works with Claude Code, Codex, Antigravity</div>
 
 <h2>The team</h2>
 <div class="grid">
@@ -68,7 +68,7 @@ npx connect-ai-marketer xcount "a post with a link"</pre>
  <div><b>Stop, do not guess.</b> If a site changed and a button is missing, the role stops and says so.</div>
 </div>
 
-<footer>connect-ai-marketer · CONNECT AI LAB · MIT. Ego Lite is a separate free product with its own terms.</footer>
+<footer>connect-ai-marketer · CONNECT AI LAB · MIT + Commons Clause: use it, change it, use it for your own business; do not sell it. Ego Lite is a separate free product with its own terms.</footer>
 </div>
 <script>
 document.getElementById('b').addEventListener('click',async()=>{const t=document.getElementById('c').textContent;try{await navigator.clipboard.writeText(t);b.textContent='Copied'}catch(e){const r=document.createRange();r.selectNodeContents(document.getElementById('c'));const s=getSelection();s.removeAllRanges();s.addRange(r)}setTimeout(()=>b.textContent='Copy',1500)});
