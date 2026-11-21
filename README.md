@@ -9,15 +9,19 @@ npx connect-ai-marketer setup
 
 [![connect-ai-marketer](docs/hero.webp)](docs/index.html)
 
-Four AI teammates, built one by one and wired by a work schedule (`team.json`): comments every 10 minutes, listening every morning, finishing and posting every upload. `npx connect-ai-marketer watch` puts the team on duty around the clock. Your agent (Claude Code, Codex, Antigravity) writes the words; the kit scans, checks, queues and types in Ego Lite, so your own tabs stay yours.
+Eight AI teammates, built one by one and wired by a work schedule (`team.json`): comments every 10 minutes, listening every morning, finishing and posting every upload. `npx connect-ai-marketer watch` puts the team on duty around the clock. Your agent (Claude Code, Codex, Antigravity) writes the words; the kit scans, checks, queues and types in Ego Lite, so your own tabs stay yours.
 
 | Teammate | What it does | Status |
 |---|---|---|
 | comment-replier | collect new Instagram comments, post replies in each commenter's language | v0.1 |
 | listener | search X and Threads for your keywords, rank by reach, write a report | v0.1 |
-| studio-finisher | reload a YouTube Studio video and diff saved title, description, playlists, tags with your sheet | v0.1 (reads only) |
+| studio-finisher | fill title, description, playlists, tags from your sheet, save, reload and diff | v0.1 |
 | crossposter | per-channel drafts, X weighted length check, approval inbox, types the post | v0.1 |
-| benchmarker, analyst, tagger, form-filler | next teammates | next |
+| analyst | read your own X numbers: recent posts, best 5, what people replied | v0.1 |
+| benchmarker | YouTube search for your keyword, last 2 weeks ranked by views, title patterns | v0.1 |
+| breakdown | one post or video that took off: text, numbers, frames from the first seconds | v0.1 |
+| form-filler | read a creator-program form, fill it from your profile, stop before Submit | v0.1 |
+| tagger | shopping tags | next |
 
 ## How the team works
 
@@ -38,6 +42,9 @@ team daily     ─▶ listener ─▶ comment-replier ─▶ desk
 npx connect-ai-marketer roles
 npx connect-ai-marketer watch            # on duty 24/7
 npx connect-ai-marketer run listener listen --kw "your product"
+npx connect-ai-marketer run benchmarker bench --kw "your topic"
+npx connect-ai-marketer run breakdown grab --url <post>
+npx connect-ai-marketer run analyst read
 npx connect-ai-marketer run comment-replier scan
 npx connect-ai-marketer run comment-replier send --file replies.json
 npx connect-ai-marketer team new-video --video <id> --sheet sheet.json --post post.json
